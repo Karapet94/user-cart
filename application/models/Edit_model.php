@@ -20,7 +20,6 @@ class Edit_model extends CI_Model{
         if (!empty($_POST)) {
             $dbResult = $this->db->select('name')->get($this->table)->row_array();
             $oldFilename = $dbResult['name'];
-//                echo UPLOADS_PATH_WRITE . $oldFilename; die();
             unlink(UPLOADS_PATH_WRITE . $oldFilename);
             $this->db->set(['name' => $fileName, 'title' => $title, 'description' => $description])->where('id', $id)->update($this->table);
         }
